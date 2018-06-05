@@ -31,7 +31,7 @@ if($action == 'create'){
   $email = $_POST['email'];
   $mobile = $_POST['mobile'];
 
-  $result = $conn->query("INSERT INTO `users` (`users`,`users`,`users`) VALUES ('$username','$email','$mobile') ");
+  $result = $conn->query("INSERT INTO `users` (`username`,`email`,`mobile`) VALUES ('$username','$email','$mobile') ");
 
   if($result){
     $res['message'] = "User added successfully";

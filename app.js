@@ -6,7 +6,7 @@ var app = new Vue({
       showingDeleteModal: false,
       errorMessage: "",
       successMessage: "",
-      users: []
+      users: [],
       newUser: {username: "", email: "", mobile: ""}
   },
 
@@ -26,6 +26,36 @@ var app = new Vue({
           app.users = response.data.users;
         }
       });
+    },
+
+    saveUser: function(){
+      //console.log(app.newUser)
+      var formData = app.toFormData(app.newUser);
+
+      axios.post("http://localhost/vue-mini-mysql/api.php?action=create", formData)
+      .then(function(response){
+        console.log(response);
+        app.newUser = {username: "", email: "", mobile: ""};
+
+        if(response.data.error){
+          app.errorMessage = response.data.message;
+        } else{
+          app.getAllUsers();
+        }
+      });
+    },
+
+    toFormData: function(obj){
+      var form_data = new FormData();
+        for ( var key in obj ){
+          form_data.append(key, obj[key]);
+        }
+        return form_data;
+    },
+    
+    clearMessage: function(){
+      app.errorMessage = "";
+      app.successMessage = "";
     }
   }
 })
