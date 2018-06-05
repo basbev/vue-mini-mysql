@@ -7,7 +7,8 @@ var app = new Vue({
       errorMessage: "",
       successMessage: "",
       users: [],
-      newUser: {username: "", email: "", mobile: ""}
+      newUser: {username: "", email: "", mobile: ""},
+      clickedUser: {}
   },
 
   mounted: function(){
@@ -19,7 +20,7 @@ var app = new Vue({
     getAllUsers: function(){
       axios.get("http://localhost/vue-mini-mysql/api.php?action=read")
       .then(function(response){
-        //console.log(response);
+
         if(response.data.error){
           app.errorMessage = response.data.message;
         } else{
@@ -34,7 +35,7 @@ var app = new Vue({
 
       axios.post("http://localhost/vue-mini-mysql/api.php?action=create", formData)
       .then(function(response){
-        console.log(response);
+
         app.newUser = {username: "", email: "", mobile: ""};
 
         if(response.data.error){
@@ -45,6 +46,10 @@ var app = new Vue({
       });
     },
 
+    selectUser(user){
+        app.clickedUser = user;
+    },
+
     toFormData: function(obj){
       var form_data = new FormData();
         for ( var key in obj ){
@@ -52,7 +57,7 @@ var app = new Vue({
         }
         return form_data;
     },
-    
+
     clearMessage: function(){
       app.errorMessage = "";
       app.successMessage = "";
