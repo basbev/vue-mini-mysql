@@ -40,7 +40,7 @@ if($action == 'create'){
     $res['message'] = "Could not insert user";
     }
 
-  $res['users'] = $users;
+
 }
 
 if($action == 'update'){
@@ -52,13 +52,29 @@ if($action == 'update'){
   $result = $conn->query("UPDATE `users` SET `username` = '$username', `email` = '$email',`mobile` = '$mobile' WHERE `id` = '$id'");
 
   if($result){
-    $res['message'] = "User added successfully";
+    $res['message'] = "User updated successfully";
   } else {
     $res['error'] = true;
-    $res['message'] = "Could not insert user";
+    $res['message'] = "Could not update user";
     }
 
-  $res['users'] = $users;
+
+}
+
+if($action == 'delete'){
+  $id = $_POST['id'];
+
+
+  $result = $conn->query("DELETE FROM `users` WHERE `id` = '$id'");
+
+  if($result){
+    $res['message'] = "User deleted successfully";
+  } else {
+    $res['error'] = true;
+    $res['message'] = "Could not delete user";
+    }
+
+
 }
 
 $conn->close();
