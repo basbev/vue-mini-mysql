@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^0.18.0",
     "firebase": "^5.0.4",
     "vuefire": "^1.4.5"
   }
