@@ -35,7 +35,7 @@
           <td>{{user.email}}</td>
           <td>{{user.mobile}}</td>
           <td><button @click="showingEditModal=true; selectUser(user)">Edit</button></td>
-          <td><button @click="showingDeleteModal=true;">Delete</button></td>
+          <td><button @click="showingDeleteModal=true; selectUser(user)">Delete</button></td>
 
 
         </tr>
@@ -125,14 +125,14 @@
     <div class="modal" id="deleteModal" v-if="showingDeleteModal">
       <div class="modalContainer">
         <div class="modalHeading">
-          <p class="fleft">Edit this User</p>
+          <p class="fleft">Are you sure?</p>
           <button class="fright close" @click="showingDeleteModal=false;">X</button>
           <div class="clear"></div>
         </div>
         <div class="modalContent">
-        <p>You are going to delete . . . . .</p>
+        <p>You are going to delete '{{clickedUser.username}}'.</p>
         <br><br><br><br><br>
-        <button @click="showingDeleteModal=false;">Yes</button>
+        <button @click="showingDeleteModal=false; deleteUser()">Yes</button>
         <button @click="showingDeleteModal=false;">No</button>
         </div>
       </div>
