@@ -46,6 +46,22 @@ var app = new Vue({
       });
     },
 
+    updateUser: function(){
+      //console.log(app.newUser)
+      var formData = app.toFormData(app.clickedUser);
+
+      axios.post("http://localhost/vue-mini-mysql/api.php?action=update", formData)
+      .then(function(response){
+        app.clickedUser = {};
+        if(response.data.error){
+          app.errorMessage = response.data.message;
+        } else{
+          app.successMessage = response.data.message;
+          app.getAllUsers();
+        }
+      });
+    },
+
     selectUser(user){
         app.clickedUser = user;
     },
