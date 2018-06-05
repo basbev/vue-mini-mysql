@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue.js crud with php and mysql</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <div id="root">
+    <div class="container">
+      <h1 class="fleft">List of users</h1>
+      <button class="fright addNew" @click="showingAddModal=true;">Add New</button>
+      <div class="clear"></div>
+      <hr>
+
+      <table class="list">
+        <tr>
+          <th>ID</th>
+          <th>ID</th>
+          <th>ID</th>
+          <th>ID</th>
+          <th>ID</th>
+          <th>ID</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>uuu</td>
+          <td>eee</td>
+          <td>mmm</td>
+          <td><button @click="showingEditModal=true;">Edit</button></td>
+          <td><button @click="showingDeleteModal=true;">Delete</button></td>
+
+
+        </tr>
+      </table>
+
+    </div>
+
+
+    <div class="modal" id="addModal" v-if="showingAddModal">
+      <div class="modalContainer">
+        <div class="modalHeading">
+          <p class="fleft">Add New User</p>
+          <button class="fright close" @click="showingAddModal=false;">X</button>
+          <div class="clear"></div>
+        </div>
+        <div class="modalContent">
+          <table class="form">
+            <tr>
+              <th>Username</th>
+              <th> : </th>
+              <td> <input type="text" name=""> </td>
+            </tr>
+
+            <tr>
+              <th>Email</th>
+              <th> : </th>
+              <td> <input type="text" name=""> </td>
+            </tr>
+
+            <tr>
+              <th>Mobile</th>
+              <th> : </th>
+              <td> <input type="text" name=""> </td>
+            </tr>
+
+            <tr>
+              <th></th>
+              <th></th>
+              <td> <button @click="showingAddModal=false;">Save</button> </td>
+            </tr>
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="editModal" v-if="showingEditModal">
+      <div class="modalContainer">
+        <div class="modalHeading">
+          <p class="fleft">Edit this User</p>
+          <button class="fright close" @click="showingEditModal=false;">X</button>
+          <div class="clear"></div>
+        </div>
+        <div class="modalContent">
+          <table class="form">
+            <tr>
+              <th>Username</th>
+              <th> : </th>
+              <td> <input type="text" name=""> </td>
+            </tr>
+
+            <tr>
+              <th>Email</th>
+              <th> : </th>
+              <td> <input type="text" name=""> </td>
+            </tr>
+
+            <tr>
+              <th>Mobile</th>
+              <th> : </th>
+              <td> <input type="text" name=""> </td>
+            </tr>
+
+            <tr>
+              <th></th>
+              <th></th>
+              <td> <button @click="showingEditModal=false;">Update</button> </td>
+            </tr>
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="deleteModal" v-if="showingDeleteModal">
+      <div class="modalContainer">
+        <div class="modalHeading">
+          <p class="fleft">Edit this User</p>
+          <button class="fright close" @click="showingDeleteModal=false;">X</button>
+          <div class="clear"></div>
+        </div>
+        <div class="modalContent">
+        <p>You are going to delete . . . . .</p>
+        <br><br><br><br><br>
+        <button @click="showingDeleteModal=false;">Yes</button>
+        <button @click="showingDeleteModal=false;">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
